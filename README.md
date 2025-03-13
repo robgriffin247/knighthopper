@@ -22,3 +22,5 @@ A game developed using the Brackeys YouTube tutorial.
 	Add a new level to first world. At the end of the first level, a portal allows users to transition to next level
 1. Add worlds
 	Add multiple worlds and world select menu into start/game over
+
+### Fixes:
