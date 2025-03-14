@@ -1,11 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://dfwvhsgyhevr8"]
+[gd_scene load_steps=13 format=4 uid="uid://dfwvhsgyhevr8"]
 
 [ext_resource type="Texture2D" uid="uid://4ltwpcx1nuk7" path="res://assets/sprites/world_tileset.png" id="1_7omgk"]
 [ext_resource type="PackedScene" uid="uid://b4sv4alpgee2c" path="res://scenes/coin.tscn" id="2_ch84v"]
 [ext_resource type="PackedScene" uid="uid://du5v4gls83e84" path="res://scenes/platform_grass2.tscn" id="3_5sj7p"]
 [ext_resource type="PackedScene" uid="uid://d1vwe4cfmuceb" path="res://scenes/green_slime.tscn" id="4_bgstg"]
-[ext_resource type="PackedScene" uid="uid://bkn6objnu61ap" path="res://scenes/label.tscn" id="5_rqkbu"]
-[ext_resource type="Script" path="res://scripts/score_label.gd" id="6_46d8x"]
 [ext_resource type="PackedScene" uid="uid://c03ps732md3q" path="res://scenes/killzone.tscn" id="7_2ard5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7b7xg"]
@@ -211,6 +209,8 @@ _data = {
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_q8yrk"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vgeey"]
+
 [node name="Level00" type="Node2D"]
 
 [node name="Background" type="TileMapLayer" parent="."]
@@ -253,16 +253,16 @@ autoplay = "Move"
 [node name="GreenSlime" parent="Slimes" instance=ExtResource("4_bgstg")]
 position = Vector2(-120, 0)
 
-[node name="ScoreLabel" parent="." instance=ExtResource("5_rqkbu")]
-offset_left = -88.0
-offset_top = -104.0
-offset_right = 262.0
-offset_bottom = -88.0
-text = "Coin Score...."
-script = ExtResource("6_46d8x")
-
 [node name="Killzone" parent="." instance=ExtResource("7_2ard5")]
-position = Vector2(0, 24)
+position = Vector2(0, 72)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_q8yrk")
+
+[node name="PlayerCatcher" type="StaticBody2D" parent="."]
+position = Vector2(0, 73)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCatcher"]
+shape = SubResource("WorldBoundaryShape2D_vgeey")

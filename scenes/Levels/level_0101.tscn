@@ -1,10 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://c3igvx3yat5eh"]
+[gd_scene load_steps=14 format=4 uid="uid://c3igvx3yat5eh"]
 
 [ext_resource type="Texture2D" uid="uid://4ltwpcx1nuk7" path="res://assets/sprites/world_tileset.png" id="1_hl5sk"]
 [ext_resource type="PackedScene" uid="uid://c03ps732md3q" path="res://scenes/killzone.tscn" id="5_mibbf"]
 [ext_resource type="PackedScene" uid="uid://du5v4gls83e84" path="res://scenes/platform_grass2.tscn" id="5_yherg"]
-[ext_resource type="PackedScene" uid="uid://bkn6objnu61ap" path="res://scenes/label.tscn" id="6_o0lun"]
-[ext_resource type="Script" path="res://scripts/score_label.gd" id="7_nav6h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7b7xg"]
 texture = ExtResource("1_hl5sk")
@@ -208,6 +206,7 @@ _data = {
 }
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8why5"]
+distance = 40.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3anhd"]
 
@@ -282,24 +281,14 @@ autoplay = "Move"
 
 [node name="Slimes" type="Node" parent="."]
 
-[node name="ScoreLabel" parent="." instance=ExtResource("6_o0lun")]
-offset_left = -88.0
-offset_top = -104.0
-offset_right = 262.0
-offset_bottom = -88.0
-text = "Coin Score...."
-script = ExtResource("7_nav6h")
-metadata/_edit_use_anchors_ = true
-
 [node name="Killzone" parent="." instance=ExtResource("5_mibbf")]
-position = Vector2(0, 8)
+position = Vector2(0, 72)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(0, 48)
 shape = SubResource("WorldBoundaryShape2D_8why5")
 
 [node name="PlayerCatcher" type="StaticBody2D" parent="."]
-position = Vector2(0, 80)
+position = Vector2(0, 73)
 collision_layer = 3
 collision_mask = 3
 
