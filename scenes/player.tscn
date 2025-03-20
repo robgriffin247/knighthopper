@@ -1,10 +1,12 @@
-[gd_scene load_steps=36 format=3 uid="uid://dxds0ydqd6m0e"]
+[gd_scene load_steps=38 format=3 uid="uid://dxds0ydqd6m0e"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_302fq"]
 [ext_resource type="Texture2D" uid="uid://dlbiogsiksy36" path="res://assets/sprites/knight.png" id="1_p8jlp"]
 [ext_resource type="PackedScene" uid="uid://bkn6objnu61ap" path="res://scenes/label.tscn" id="3_pn5lv"]
-[ext_resource type="Script" path="res://scenes/hud_score.gd" id="4_oxcot"]
+[ext_resource type="Script" path="res://scripts/hud_score.gd" id="4_oxcot"]
 [ext_resource type="Texture2D" uid="uid://in7u84bfbiox" path="res://assets/sprites/coin.png" id="5_w34lb"]
+[ext_resource type="Script" path="res://scripts/hud_lives.gd" id="6_72vt1"]
+[ext_resource type="Texture2D" uid="uid://drvcctwjroxob" path="res://assets/sprites/heart.png" id="6_nqvfs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3kct"]
 atlas = ExtResource("1_p8jlp")
@@ -301,11 +303,33 @@ offset_top = -8.0
 offset_right = 103.0
 offset_bottom = 8.0
 theme_override_font_sizes/font_size = 8
-text = "x 00"
+text = "x 0"
 vertical_alignment = 1
 script = ExtResource("4_oxcot")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/HUD/Score"]
 texture = ExtResource("5_w34lb")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Lives" type="Node2D" parent="Camera2D/HUD"]
+visible = false
+script = ExtResource("6_72vt1")
+
+[node name="Life1" type="Sprite2D" parent="Camera2D/HUD/Lives"]
+position = Vector2(269, 0)
+texture = ExtResource("6_nqvfs")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Life2" type="Sprite2D" parent="Camera2D/HUD/Lives"]
+position = Vector2(253, 0)
+texture = ExtResource("6_nqvfs")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Life3" type="Sprite2D" parent="Camera2D/HUD/Lives"]
+position = Vector2(237, 0)
+texture = ExtResource("6_nqvfs")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
