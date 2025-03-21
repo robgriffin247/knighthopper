@@ -170,44 +170,6 @@ texture = ExtResource("1_hl5sk")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7b7xg")
 
-[sub_resource type="Animation" id="Animation_g15mq"]
-resource_name = "Move"
-length = 2.5
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(3512, -56), Vector2(3512, -216)]
-}
-
-[sub_resource type="Animation" id="Animation_orsjs"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(3512, -56)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_aicyr"]
-_data = {
-"Move": SubResource("Animation_g15mq"),
-"RESET": SubResource("Animation_orsjs")
-}
-
 [sub_resource type="Animation" id="Animation_adql7"]
 resource_name = "Move"
 length = 3.0
@@ -360,9 +322,48 @@ _data = {
 "RESET": SubResource("Animation_l33xr")
 }
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8why5"]
+[sub_resource type="Animation" id="Animation_g15mq"]
+resource_name = "Move"
+length = 2.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3512, -56), Vector2(3512, -216)]
+}
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3anhd"]
+[sub_resource type="Animation" id="Animation_orsjs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3512, -56)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aicyr"]
+_data = {
+"Move": SubResource("Animation_g15mq"),
+"RESET": SubResource("Animation_orsjs")
+}
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_md2a7"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4j2pp"]
+distance = 16.0
 
 [node name="Level0101" type="Node2D"]
 position = Vector2(0, -32)
@@ -509,14 +510,17 @@ position = Vector2(2488, -440)
 [node name="Coin22" parent="Coins" instance=ExtResource("2_44335")]
 position = Vector2(2624, -464)
 
-[node name="Platform" parent="." instance=ExtResource("4_2240d")]
-position = Vector2(3512, -56)
+[node name="Coin42" parent="Coins" instance=ExtResource("2_44335")]
+position = Vector2(3040, -56)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
-libraries = {
-"": SubResource("AnimationLibrary_aicyr")
-}
-autoplay = "Move"
+[node name="Coin43" parent="Coins" instance=ExtResource("2_44335")]
+position = Vector2(3120, -56)
+
+[node name="Coin44" parent="Coins" instance=ExtResource("2_44335")]
+position = Vector2(3184, -56)
+
+[node name="Coin45" parent="Coins" instance=ExtResource("2_44335")]
+position = Vector2(3248, -56)
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -558,6 +562,16 @@ libraries = {
 }
 autoplay = "Move"
 
+[node name="Platform5" parent="Platforms" instance=ExtResource("4_2240d")]
+position = Vector2(3512, -56)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform5"]
+root_node = NodePath("../../Platform5")
+libraries = {
+"": SubResource("AnimationLibrary_aicyr")
+}
+autoplay = "Move"
+
 [node name="Slimes" type="Node" parent="."]
 
 [node name="GreenSlime" parent="Slimes" instance=ExtResource("3_5xj2f")]
@@ -594,10 +608,10 @@ position = Vector2(3408, -64)
 position = Vector2(2832, -80)
 
 [node name="Killzone" parent="." instance=ExtResource("5_mibbf")]
-position = Vector2(0, 72)
+position = Vector2(0, 96)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-shape = SubResource("WorldBoundaryShape2D_8why5")
+shape = SubResource("WorldBoundaryShape2D_md2a7")
 
 [node name="PlayerCatcher" type="StaticBody2D" parent="Killzone"]
 position = Vector2(0, 1)
@@ -605,16 +619,5 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone/PlayerCatcher"]
-shape = SubResource("WorldBoundaryShape2D_3anhd")
-
-[node name="Coin" parent="." instance=ExtResource("2_44335")]
-position = Vector2(3040, -24)
-
-[node name="Coin2" parent="." instance=ExtResource("2_44335")]
-position = Vector2(3120, -24)
-
-[node name="Coin3" parent="." instance=ExtResource("2_44335")]
-position = Vector2(3184, -24)
-
-[node name="Coin4" parent="." instance=ExtResource("2_44335")]
-position = Vector2(3248, -24)
+position = Vector2(0, 16)
+shape = SubResource("WorldBoundaryShape2D_4j2pp")

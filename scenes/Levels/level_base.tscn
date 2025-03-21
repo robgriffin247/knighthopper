@@ -1,8 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://cgdytqx1t4b0p"]
+[gd_scene load_steps=7 format=4 uid="uid://cgdytqx1t4b0p"]
 
 [ext_resource type="Texture2D" uid="uid://4ltwpcx1nuk7" path="res://assets/sprites/world_tileset.png" id="1_601wb"]
-[ext_resource type="PackedScene" uid="uid://bkn6objnu61ap" path="res://scenes/label.tscn" id="2_pj4tn"]
-[ext_resource type="Script" path="res://scripts/score_label.gd" id="3_53mgw"]
 [ext_resource type="PackedScene" uid="uid://c03ps732md3q" path="res://scenes/killzone.tscn" id="4_we3gx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7b7xg"]
@@ -171,8 +169,9 @@ sources/0 = SubResource("TileSetAtlasSource_7b7xg")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8why5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3anhd"]
+distance = 16.0
 
-[node name="Level0102" type="Node2D"]
+[node name="BaseLevel" type="Node2D"]
 position = Vector2(0, -32)
 
 [node name="Background" type="TileMapLayer" parent="."]
@@ -195,26 +194,17 @@ tile_set = SubResource("TileSet_bigmu")
 
 [node name="Slimes" type="Node" parent="."]
 
-[node name="ScoreLabel" parent="." instance=ExtResource("2_pj4tn")]
-offset_left = -88.0
-offset_top = -104.0
-offset_right = 262.0
-offset_bottom = -88.0
-text = "Coin Score...."
-script = ExtResource("3_53mgw")
-metadata/_edit_use_anchors_ = true
-
 [node name="Killzone" parent="." instance=ExtResource("4_we3gx")]
-position = Vector2(0, 8)
+position = Vector2(0, 96)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(0, 48)
 shape = SubResource("WorldBoundaryShape2D_8why5")
 
-[node name="PlayerCatcher" type="StaticBody2D" parent="."]
-position = Vector2(0, 80)
+[node name="PlayerCatcher" type="StaticBody2D" parent="Killzone"]
+position = Vector2(0, 1)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCatcher"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone/PlayerCatcher"]
+position = Vector2(0, 16)
 shape = SubResource("WorldBoundaryShape2D_3anhd")

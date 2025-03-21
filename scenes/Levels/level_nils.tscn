@@ -169,9 +169,10 @@ texture = ExtResource("1_sfyk1")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7b7xg")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8why5"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bfpm0"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3anhd"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6rogr"]
+distance = 16.0
 
 [node name="LevelNils" type="Node2D"]
 position = Vector2(0, -32)
@@ -283,15 +284,16 @@ position = Vector2(776, 48)
 position = Vector2(968, 144)
 
 [node name="Killzone" parent="." instance=ExtResource("3_f4h8j")]
-position = Vector2(0, 320)
+position = Vector2(0, 328)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-shape = SubResource("WorldBoundaryShape2D_8why5")
+shape = SubResource("WorldBoundaryShape2D_bfpm0")
 
 [node name="PlayerCatcher" type="StaticBody2D" parent="Killzone"]
 position = Vector2(0, 1)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Killzone/PlayerCatcher"]
-shape = SubResource("WorldBoundaryShape2D_3anhd")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone/PlayerCatcher"]
+position = Vector2(0, 16)
+shape = SubResource("WorldBoundaryShape2D_6rogr")
