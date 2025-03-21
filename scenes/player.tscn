@@ -1,7 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://dxds0ydqd6m0e"]
+[gd_scene load_steps=37 format=3 uid="uid://dxds0ydqd6m0e"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_302fq"]
 [ext_resource type="Texture2D" uid="uid://dlbiogsiksy36" path="res://assets/sprites/knight.png" id="1_p8jlp"]
+[ext_resource type="AudioStream" uid="uid://8g3k524a5g6x" path="res://assets/sounds/hurt.wav" id="3_yjd1u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3kct"]
 atlas = ExtResource("1_p8jlp")
@@ -267,6 +268,43 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmqfc"]
 size = Vector2(10, 14)
 
+[sub_resource type="Animation" id="Animation_3kgmb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeathSound:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_oym4j"]
+resource_name = "death_sound"
+length = 0.182
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeathSound:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6livd"]
+_data = {
+"RESET": SubResource("Animation_3kgmb"),
+"death_sound": SubResource("Animation_oym4j")
+}
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 2
@@ -289,3 +327,12 @@ position = Vector2(40, -24)
 zoom = Vector2(4, 4)
 limit_bottom = 256
 position_smoothing_speed = 4.0
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yjd1u")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6livd")
+}

@@ -5,6 +5,7 @@ func _on_body_entered(body: Node2D) -> void:
 	print("death") # for debugging - had bug on respawn causing double-death
 	
 	PlayerGlobal.alive = false
+	body.get_node("AnimationPlayer").play("death_sound")
 	PlayerManager.player_spawned = false
 	self.set_collision_mask_value(2, false)
 	

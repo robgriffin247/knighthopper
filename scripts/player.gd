@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var SPEED: float = 85.0
 const JUMP_VELOCITY:float = -320.0
