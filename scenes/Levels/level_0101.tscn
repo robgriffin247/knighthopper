@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://4ltwpcx1nuk7" path="res://assets/sprites/world_tileset.png" id="1_hl5sk"]
 [ext_resource type="PackedScene" uid="uid://b4sv4alpgee2c" path="res://scenes/coin.tscn" id="2_44335"]
 [ext_resource type="PackedScene" uid="uid://d1vwe4cfmuceb" path="res://scenes/green_slime.tscn" id="3_5xj2f"]
-[ext_resource type="PackedScene" uid="uid://1g8wlpl23pmf" path="res://scenes/platform_grass1.tscn" id="4_2240d"]
+[ext_resource type="PackedScene" uid="uid://1g8wlpl23pmf" path="res://scenes/platforms/platform_grass1.tscn" id="4_2240d"]
 [ext_resource type="PackedScene" uid="uid://c03ps732md3q" path="res://scenes/killzone.tscn" id="5_mibbf"]
-[ext_resource type="PackedScene" uid="uid://du5v4gls83e84" path="res://scenes/platform_grass2.tscn" id="5_yherg"]
+[ext_resource type="PackedScene" uid="uid://du5v4gls83e84" path="res://scenes/platforms/platform_grass2.tscn" id="5_yherg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7b7xg"]
 texture = ExtResource("1_hl5sk")

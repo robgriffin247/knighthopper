@@ -1,4 +1,4 @@
-extends Node2D
+extends Label
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,8 +8,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Global.lives == 2:
-		self.get_node("Life3").visible = false
-	if Global.lives == 1:
-		self.get_node("Life3").visible = false
-		self.get_node("Life2").visible = false
+
+	if PlayerGlobal.score == 0:
+		self.text = "You collected no coins :("
+	if PlayerGlobal.score > 0:
+		self.text = "You collected " + str(PlayerGlobal.score) + " coins :D"

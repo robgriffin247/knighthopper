@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://b1e75e7hbbrvm"]
+[gd_scene load_steps=8 format=4 uid="uid://b1e75e7hbbrvm"]
 
 [ext_resource type="Texture2D" uid="uid://4ltwpcx1nuk7" path="res://assets/sprites/world_tileset.png" id="1_sfyk1"]
 [ext_resource type="PackedScene" uid="uid://b4sv4alpgee2c" path="res://scenes/coin.tscn" id="2_3o6d3"]
@@ -171,9 +171,6 @@ sources/0 = SubResource("TileSetAtlasSource_7b7xg")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bfpm0"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6rogr"]
-distance = 16.0
-
 [node name="LevelNils" type="Node2D"]
 position = Vector2(0, -32)
 
@@ -288,12 +285,3 @@ position = Vector2(0, 328)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_bfpm0")
-
-[node name="PlayerCatcher" type="StaticBody2D" parent="Killzone"]
-position = Vector2(0, 1)
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone/PlayerCatcher"]
-position = Vector2(0, 16)
-shape = SubResource("WorldBoundaryShape2D_6rogr")

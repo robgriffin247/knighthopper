@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://cgdytqx1t4b0p"]
+[gd_scene load_steps=6 format=4 uid="uid://dq12w6f8mg48j"]
 
-[ext_resource type="Texture2D" uid="uid://4ltwpcx1nuk7" path="res://assets/sprites/world_tileset.png" id="1_601wb"]
-[ext_resource type="PackedScene" uid="uid://c03ps732md3q" path="res://scenes/killzone.tscn" id="4_we3gx"]
+[ext_resource type="Texture2D" uid="uid://4ltwpcx1nuk7" path="res://assets/sprites/world_tileset.png" id="1_tmiay"]
+[ext_resource type="PackedScene" uid="uid://c03ps732md3q" path="res://scenes/killzone.tscn" id="2_ub4sx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7b7xg"]
-texture = ExtResource("1_601wb")
+texture = ExtResource("1_tmiay")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -168,16 +168,17 @@ sources/0 = SubResource("TileSetAtlasSource_7b7xg")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8why5"]
 
-[node name="BaseLevel" type="Node2D"]
+[node name="TestLevel2" type="Node2D"]
 position = Vector2(0, -32)
 
 [node name="Background" type="TileMapLayer" parent="."]
 position = Vector2(0, 32)
+tile_map_data = PackedByteArray("AAAYAP//AAADAAcAAAAYAP7/AAADAAcAAAAYAPz/AAACAAQAAAA=")
 tile_set = SubResource("TileSet_bigmu")
 
 [node name="Midground" type="TileMapLayer" parent="."]
 position = Vector2(0, 32)
-tile_map_data = PackedByteArray("AAD8/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD8/wAAAAACAAAAAAD9/wAAAAACAAAAAAD+/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAHAAAAAAACAAAAAAAIAAAAAAACAAAAAAAJAAAAAAACAAAAAAAKAAAAAAACAAAAAAALAAAAAAACAAAAAAAMAAAAAAACAAAAAAANAAAAAAACAAAAAAAOAAAAAAACAAAAAAAPAAAAAAACAAAAAAAQAAAAAAACAAAAAAARAAAAAAACAAAAAAASAAAAAAACAAAAAAATAAAAAAACAAAAAAAUAAAAAAACAAAAAAAVAAAAAAACAAAAAAAWAAAAAAACAAAAAAAXAAAAAAACAAAAAAAYAAAAAAACAAAAAAAZAAAAAAACAAAAAAAaAAAAAAACAAAAAAAbAAAAAAACAAAAAAA=")
 tile_set = SubResource("TileSet_bigmu")
 
 [node name="Foreground" type="TileMapLayer" parent="."]
@@ -185,13 +186,13 @@ z_index = 10
 position = Vector2(-8, 32)
 tile_set = SubResource("TileSet_bigmu")
 
-[node name="Coins" type="Node" parent="."]
+[node name="Coins" type="Node2D" parent="."]
 
-[node name="Platforms" type="Node" parent="."]
+[node name="Platforms" type="Node2D" parent="."]
 
-[node name="Slimes" type="Node" parent="."]
+[node name="Slimes" type="Node2D" parent="."]
 
-[node name="Killzone" parent="." instance=ExtResource("4_we3gx")]
+[node name="Killzone" parent="." instance=ExtResource("2_ub4sx")]
 position = Vector2(0, 96)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://kecqops84y1g"]
+
+[ext_resource type="Texture2D" uid="uid://in7u84bfbiox" path="res://assets/sprites/coin.png" id="1_ei5a7"]
+[ext_resource type="PackedScene" uid="uid://bkn6objnu61ap" path="res://scenes/label.tscn" id="2_m2317"]
+[ext_resource type="Script" path="res://scripts/hud_score.gd" id="3_gdsri"]
+
+[node name="HUD" type="Node2D"]
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Coins"]
+position = Vector2(32, 32)
+scale = Vector2(3, 3)
+texture = ExtResource("1_ei5a7")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Label" parent="Coins" instance=ExtResource("2_m2317")]
+offset_left = 64.0
+offset_top = 16.0
+offset_right = 120.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 24
+text = "x 0"
+vertical_alignment = 1
+script = ExtResource("3_gdsri")
