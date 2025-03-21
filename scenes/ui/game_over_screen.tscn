@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b1p52f1dn1w3q"]
 
 [ext_resource type="PackedScene" uid="uid://bkn6objnu61ap" path="res://scenes/label.tscn" id="1_872io"]
-[ext_resource type="Script" path="res://scenes/game_over_screen.gd" id="1_q4lxv"]
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_q4lxv"]
 [ext_resource type="Script" path="res://scripts/game_over_score.gd" id="2_ldta4"]
 [ext_resource type="FontFile" uid="uid://5g51h76wnbto" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_sc7mo"]
 
@@ -55,14 +55,27 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_ldta4")
 
-[node name="RetryButton" type="Button" parent="Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 301.0
-offset_top = 288.0
-offset_right = 603.0
-offset_bottom = 400.0
+offset_left = 96.0
+offset_top = 296.0
+offset_right = 798.0
+offset_bottom = 389.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RetryButton" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("3_sc7mo")
 theme_override_font_sizes/font_size = 36
-text = "RETRY"
+text = " RETRY "
 
-[connection signal="pressed" from="Panel/RetryButton" to="." method="_on_retry_button_pressed"]
+[node name="ChangeLevelButton" type="Button" parent="Panel/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_sc7mo")
+theme_override_font_sizes/font_size = 36
+text = " CHANGE LEVEL "
+
+[connection signal="pressed" from="Panel/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/ChangeLevelButton" to="." method="_on_retry_button_pressed"]

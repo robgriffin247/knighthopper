@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://bgk8hleex2l4b"]
+[gd_scene load_steps=10 format=4 uid="uid://bgk8hleex2l4b"]
 
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_70lxs"]
 [ext_resource type="Texture2D" uid="uid://4ltwpcx1nuk7" path="res://assets/sprites/world_tileset.png" id="1_wl0ye"]
 [ext_resource type="PackedScene" uid="uid://b4sv4alpgee2c" path="res://scenes/coin.tscn" id="2_t2x3w"]
 [ext_resource type="PackedScene" uid="uid://c03ps732md3q" path="res://scenes/killzone.tscn" id="3_emt7u"]
+[ext_resource type="PackedScene" uid="uid://sio7amurl4qk" path="res://scenes/levels/player_spawn.tscn" id="5_p6bp6"]
 [ext_resource type="PackedScene" uid="uid://d1vwe4cfmuceb" path="res://scenes/green_slime.tscn" id="6_7gm57"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7b7xg"]
@@ -171,6 +173,10 @@ sources/0 = SubResource("TileSetAtlasSource_7b7xg")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8why5"]
 
 [node name="TestLevel1" type="Node2D"]
+position = Vector2(0, -32)
+script = ExtResource("1_70lxs")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("5_p6bp6")]
 position = Vector2(0, -32)
 
 [node name="Background" type="TileMapLayer" parent="."]
