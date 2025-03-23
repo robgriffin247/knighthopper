@@ -265,8 +265,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmqfc"]
-size = Vector2(10, 14)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nb7mf"]
+radius = 5.0
+height = 14.0
 
 [sub_resource type="Animation" id="Animation_3kgmb"]
 length = 0.001
@@ -313,19 +314,19 @@ script = ExtResource("1_302fq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_jbjg3")
-animation = &"die"
+animation = &"idle"
 autoplay = "idle"
-frame = 3
-frame_progress = 1.0
+frame = 1
+frame_progress = 0.314754
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_mmqfc")
+shape = SubResource("CapsuleShape2D_nb7mf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(40, -24)
 zoom = Vector2(4, 4)
-limit_bottom = 256
+limit_bottom = 48
 position_smoothing_speed = 4.0
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]

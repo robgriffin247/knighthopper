@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://cgdytqx1t4b0p"]
+[gd_scene load_steps=8 format=3 uid="uid://cgdytqx1t4b0p"]
 
 [ext_resource type="Texture2D" uid="uid://4ltwpcx1nuk7" path="res://assets/sprites/world_tileset.png" id="1_601wb"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_qlr6q"]
+[ext_resource type="PackedScene" uid="uid://sio7amurl4qk" path="res://scenes/player_spawn.tscn" id="4_oai3q"]
 [ext_resource type="PackedScene" uid="uid://c03ps732md3q" path="res://scenes/killzone.tscn" id="4_we3gx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7b7xg"]
@@ -169,30 +171,29 @@ sources/0 = SubResource("TileSetAtlasSource_7b7xg")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8why5"]
 
 [node name="BaseLevel" type="Node2D"]
-position = Vector2(0, -32)
+script = ExtResource("1_qlr6q")
 
 [node name="Background" type="TileMapLayer" parent="."]
-position = Vector2(0, 32)
 tile_set = SubResource("TileSet_bigmu")
 
 [node name="Midground" type="TileMapLayer" parent="."]
-position = Vector2(0, 32)
-tile_map_data = PackedByteArray("AAD8/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray(0, 0, 255, 255, 252, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 252, 255, 0, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_bigmu")
 
 [node name="Foreground" type="TileMapLayer" parent="."]
 z_index = 10
-position = Vector2(-8, 32)
 tile_set = SubResource("TileSet_bigmu")
 
-[node name="Coins" type="Node" parent="."]
+[node name="Coins" type="Node2D" parent="."]
 
-[node name="Platforms" type="Node" parent="."]
+[node name="Platforms" type="Node2D" parent="."]
 
-[node name="Slimes" type="Node" parent="."]
+[node name="Slimes" type="Node2D" parent="."]
 
 [node name="Killzone" parent="." instance=ExtResource("4_we3gx")]
-position = Vector2(0, 96)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_8why5")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("4_oai3q")]
+position = Vector2(0, -64)

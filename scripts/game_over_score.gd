@@ -11,5 +11,7 @@ func _process(_delta: float) -> void:
 
 	if PlayerGlobal.score == 0:
 		self.text = "You collected no coins :("
-	if PlayerGlobal.score > 0:
+	if PlayerGlobal.score == 1:
+		self.text = "You collected 1 coin :D"
+	if PlayerGlobal.score > 1:
 		self.text = "You collected " + str(PlayerGlobal.score) + " coins :D"
