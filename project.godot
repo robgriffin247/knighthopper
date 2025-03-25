@@ -11,15 +11,15 @@ config_version=5
 [application]
 
 config/name="KnightHopper"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://game/game.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Music="*res://scenes/music.tscn"
-PlayerManager="*res://scripts/globals/player_manager.gd"
-PlayerGlobal="*res://scripts/globals/player_global.gd"
+Music="*res://game/globals/music.tscn"
+PlayerManager="*res://game/globals/player_manager.gd"
+GameManager="*res://game/globals/game_manager.gd"
 
 [display]
 
