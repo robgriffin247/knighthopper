@@ -35,5 +35,6 @@ func _on_restart_button_pressed() -> void:
 	PlayerManager.alive = true
 	GameManager.reached_exit = false
 	PlayerManager.coins = 0
+	PlayerManager.slimes_killed = 0
 	Engine.time_scale = 1.0
 	get_tree().reload_current_scene()
